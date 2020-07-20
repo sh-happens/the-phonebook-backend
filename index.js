@@ -28,6 +28,7 @@ const unknownEndpoint = (request, response) => {
 };
 
 app.use(requestLogger);
+app.use(express.static("build"));
 
 let persons = [
   {
