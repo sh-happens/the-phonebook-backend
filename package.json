@@ -5,14 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\", && exit 1",
+    "build:ui": "rm -rf build && cd .././the-phonebook && npm run build --prod && cp -r build .././the-phonebook-backend/",
+    "deploy": "git push heroku master",
+    "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && npm run deploy",
+    "logs:prod": "heroku logs --tail",
     "dev": "nodemon index.js"
   },
   "author": "yerbol kosbayev",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.9.25",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
